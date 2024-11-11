@@ -5,8 +5,8 @@ using UnityEngine;
 public class Playerattack : MonoBehaviour
 {
     public float attackCooldown;
-    private Transform firePoint;
-    private GameObject[] fireBalls;
+    public Transform firePoint;
+    public GameObject[] fireBalls;
 
     private Animator anim;
     private Playermovment playerMovment;
@@ -34,17 +34,18 @@ public class Playerattack : MonoBehaviour
         anim.SetTrigger("attack");
         cooldownTimer = 0;
 
-
+        fireBalls[FindFireBall()].transform.position = firePoint.position;
+        fireBalls[FindFireBall()].GetComponent<fireball>().SetDirection(Mathf.Sign(transform.localScale.x));
     }
-    //private int FindFireball()
-    //{
-    //    for(int i = 0; i < fireBalls.Length; i++)
-    //   {
-    //       if (!fireBalls[i].activeInHierarchy)
-    //        {
-    //            return i;
-    //       }
-    //       return 0;
-    //    }
-    //}
+    private int FindFireBall()
+    {
+        for(int i = 0; i < fireBalls.Length; i++)
+        {
+            if (!fireBalls[i].activeInHierarchy)
+            {
+                return i;
+            }
+        } 
+           return 0;
+    }
 }

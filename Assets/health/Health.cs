@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
     private Animator anim;
     private bool dead;
     public float startingHealth;
-   public float currentHealth { get; private set; }
+    public float currentHealth { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
     }
     public void TakeDamage(float _damage) 
     {
-        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+        currentHealth = Mathf.Clamp(currentHealth - _damage, 0 , startingHealth);
         if (currentHealth>0)
         {
             anim.SetTrigger("Flickering");
@@ -37,9 +37,11 @@ public class Health : MonoBehaviour
         {
             if(!dead)
             {
-                anim.SetTrigger("dead");
+                anim.SetTrigger("die");
                 GetComponent<Playermovment>().enabled= false;
+                GetComponent<Playerattack>().enabled= true;
                 dead = true;
+               
             }
         }
     }

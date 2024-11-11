@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class fireball : MonoBehaviour
 { 
     public float speed;
     private bool hit;
     private float direction;
     private BoxCollider2D boxCollider;
     private Animator anim;
+    private float lifeTime;
 
     private void Start()
     {
@@ -24,19 +25,32 @@ public class NewBehaviourScript : MonoBehaviour
         float movementspeed = speed * Time.deltaTime * direction;
 
         transform.Translate(movementspeed, 0, 0);
+
+        lifeTime += Time.deltaTime *direction;
+        if (lifeTime > 0) 
+        { 
+        gameObject.SetActive(false);
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         hit = true;
         boxCollider.enabled = false;
         anim.SetTrigger("explode");
+
+                  if (collision.CompareTag("enemy"))
+            {
+            Destroy(gameObject);
+            }
+        
     }
     public void SetDirection(float _direction)
     {
+        lifeTime = 0;
         direction = _direction;
-        gameObject.SetActive(false);
+        gameObject.SetActive(true);
         hit = false;
-        boxCollider.enabled = true;
 
         float localScaleX = transform.localScale.x;
         if (Mathf.Sign(localScaleX) != _direction)
@@ -49,4 +63,5 @@ public class NewBehaviourScript : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+    
 }
