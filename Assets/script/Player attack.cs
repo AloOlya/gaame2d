@@ -27,7 +27,7 @@ public class Playerattack : MonoBehaviour
             Attack();
             
         }
-        cooldownTimer = Time.deltaTime;
+        cooldownTimer += Time.deltaTime;
     }
     private void Attack()
     {

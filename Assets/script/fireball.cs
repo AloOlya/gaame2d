@@ -26,8 +26,8 @@ public class fireball : MonoBehaviour
 
         transform.Translate(movementspeed, 0, 0);
 
-        lifeTime += Time.deltaTime *direction;
-        if (lifeTime > 0) 
+        lifeTime += Time.deltaTime;
+        if (lifeTime > 5 ) 
         { 
         gameObject.SetActive(false);
         }
@@ -39,10 +39,10 @@ public class fireball : MonoBehaviour
         boxCollider.enabled = false;
         anim.SetTrigger("explode");
 
-                  if (collision.CompareTag("enemy"))
-            {
-            Destroy(gameObject);
-            }
+            //      if (collision.CompareTag("enemy"))
+            //{
+            //Destroy(gameObject);
+            //}
         
     }
     public void SetDirection(float _direction)
