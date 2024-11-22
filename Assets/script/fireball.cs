@@ -39,10 +39,10 @@ public class fireball : MonoBehaviour
         boxCollider.enabled = false;
         anim.SetTrigger("explode");
 
-            //      if (collision.CompareTag("enemy"))
-            //{
-            //Destroy(gameObject);
-            //}
+                  if (collision.CompareTag("enemy"))
+            {
+            Destroy(gameObject);
+            }
         
     }
     public void SetDirection(float _direction)

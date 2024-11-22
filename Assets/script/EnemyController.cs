@@ -7,11 +7,12 @@ public class EnemyController : MonoBehaviour
     public GameObject dragon;
     public GameObject pig;
     public float speed;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,4 +26,5 @@ public class EnemyController : MonoBehaviour
             pig.transform.position = Vector2.MoveTowards(vrag1, player1, speed * Time.deltaTime);
         }
     }
+
 }
