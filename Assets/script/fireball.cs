@@ -29,7 +29,7 @@ public class fireball : MonoBehaviour
         lifeTime += Time.deltaTime;
         if (lifeTime > 5 ) 
         { 
-        gameObject.SetActive(false);
+        Deactivate();
         }
 
     }
@@ -41,7 +41,7 @@ public class fireball : MonoBehaviour
 
                   if (collision.CompareTag("enemy"))
             {
-            Destroy(gameObject);
+            Deactivate();
             }
         
     }

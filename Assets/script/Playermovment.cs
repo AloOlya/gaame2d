@@ -14,12 +14,17 @@ public class Playermovment : MonoBehaviour
     private float wallJumpCooldown;
     private CapsuleCollider2D capsuleCollider;
     private float horizontal;
+
+    private Vector3 respawnPoint;
+    private BoxCollider2D boxCollider;
+    
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+        respawnPoint = transform.position;
     }
 
     // Update is called once per frame
@@ -67,6 +72,7 @@ public class Playermovment : MonoBehaviour
         {
             wallJumpCooldown += Time.deltaTime;
         }
+       
     }
 
 
@@ -106,7 +112,17 @@ public class Playermovment : MonoBehaviour
     {
         return horizontal == 0 && IsGrounded() && !onWall();
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "DeadZone")
+        {
+            transform.position = respawnPoint;
+        }else if (collision.tag == "Checkpoint")
+        {
+            respawnPoint = transform.position;
+            boxCollider.enabled = false;
+        }
+    }
 }
 
 
