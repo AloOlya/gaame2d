@@ -6,6 +6,7 @@ public class enemy : MonoBehaviour
 {
     public int health;
     
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,9 @@ public class enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,4 +46,11 @@ public class enemy : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    //private void Flip()
+    //{
+    //    Vector3 localScale = transform.localScale;
+    //    localScale.x *= -1;
+    //    transform.localScale = localScale;
+    //}
 }

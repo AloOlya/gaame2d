@@ -5,20 +5,19 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     public GameObject bulletprefab;
-    public float shootingInterval = 1f;
-    public float damage;
+    public float shootingInterval = 2f;
     public GameObject shootpos;
-    public float speed = 10f;
+    public float speed = 5f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        InvokeRepeating("Shoot", 0f, shootingInterval);
     }
 
     // Update is called once per frame
     void Update()
     {
-        InvokeRepeating("Shoot", 0f,shootingInterval);
+       
     }
 
     private void Shoot() 
@@ -27,12 +26,6 @@ public class Turret : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(speed, 0f);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            collision.GetComponent<Health>().TakeDamage(damage);
-        }
-    }
+    
 
 }

@@ -10,6 +10,8 @@ TagManager:
   - enemy
   - DeadZone
   - Checkpoint
+  - bulletTurret
+  - Coins
   layers:
   - Default
   - TransparentFX
