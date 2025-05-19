@@ -29,9 +29,9 @@ public class enemy : MonoBehaviour
     {
         if (collision.CompareTag("fireball"))
         {
-            health -= 1;
+            TakeDamage(1);
         }
-
+        
     }
 
     public void TakeDamage(int _damage)

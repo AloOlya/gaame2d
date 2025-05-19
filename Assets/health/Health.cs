@@ -9,12 +9,13 @@ public class Health : MonoBehaviour
     private Animator anim;
     private bool dead;
     public float startingHealth;
-    public float currentHealth { get; private set; }
-
+    public float currentHealth
+    ;
+    
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = startingHealth;
+       currentHealth=startingHealth;
         anim = GetComponent<Animator>();
     }
 
@@ -25,31 +26,34 @@ public class Health : MonoBehaviour
         {
             TakeDamage(1);
         }
+        
     }
-    public void TakeDamage(float _damage) 
+
+    public void TakeDamage(float _damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - _damage, 0 , startingHealth);
-        if (currentHealth>0)
+        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+        if (currentHealth > 0)
         {
-            anim.SetTrigger("Flickering");
+            anim.SetTrigger("flickering");
         }
         else
         {
-            if(!dead)
+            if (!dead)
             {
                 anim.SetTrigger("die");
-                GetComponent<Playermovment>().enabled= false;
-                GetComponent<Playerattack>().enabled= true;
-                GetComponent<Rigidbody2D>().bodyType= RigidbodyType2D.Static;
+                GetComponent<Playermovement>().enabled = false;
+                GetComponent<PlayerAttack>().enabled = false;
+                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+
                 dead = true;
-               
             }
         }
     }
-    public void AddHealth(float _value)
+    
+    public void addHealth(float _value)
     {
-        currentHealth = Mathf.Clamp(currentHealth +_value, 0, startingHealth);
-
-
+        currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
     }
 }
+
+    

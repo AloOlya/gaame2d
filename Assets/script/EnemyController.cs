@@ -2,65 +2,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyMove : MonoBehaviour
 {
-    public float damage;
-    public GameObject dragon;
-    public GameObject pig;
-    public float speed;
+    public GameObject pos1;
+    public GameObject pos2;
+    private Rigidbody2D rb;
     private Animator anim;
-    public float movementDistance;
-
-    private bool movingLeft;
-    private float leftEdge;
-    private float rightEdge;
-
+    private Transform currentPoint;
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        leftEdge = transform.position.x - movementDistance;
-        rightEdge = transform.position.x + movementDistance;
+        //currentPoint = pos1.transform;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-    //    Vector2 player1 = dragon.transform.position;
-    //    Vector2 vrag1 = pig.transform.position;
+//    void Update()
+//    {
+//        //Vector2 point = currentPoint.position - transform.position;
+//        if (currentPoint == pos1.transform)
+//        {
+//            rb.velocity = new Vector2(-speed, 0);
+//        }
+//        if (currentPoint == pos2.transform)
+//        {
+//            rb.velocity = new Vector2(speed, 0);
+//        }
 
-    //    if (Vector2.Distance(player1, vrag1) < 16)
-    //    {
-    //        pig.transform.position = Vector2.MoveTowards(vrag1, player1, speed * Time.deltaTime);
-    //    }
-        if (movingLeft)
-        {
-            if (transform.position.x > leftEdge)
-            {
-                transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.z);
-            }
-            else
-            {
-                movingLeft = false;
-            }
-        }
-        else
-        {
-            if (transform.position.x < rightEdge)
-            {
-                transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y, transform.position.z);
-            }
-            else
-            {
-                movingLeft = true;
-            }
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            collision.GetComponent<Health>().TakeDamage(damage);
-        }
-    }
+//        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pos2.transform)
+//        {
+//            //Flip();
+//            currentPoint = pos1.transform;
+//        }
+//        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == pos1.transform)
+//        {
+//            //Flip();
+//            currentPoint = pos2.transform;
+//        }
+//    }
+//    private void Flip()
+//    {
+//        Vector3 localScale = transform.localScale;
+//        localScale.x *= -1;
+//        transform.localScale = localScale;
+//    }
+//    private void OnDrawGizmos()
+//    {
+//        Gizmos.DrawLine(pos1.transform.position, pos2.transform.position);
+//    }
+//}
+////private void OnTriggerEnter2D(Collider2D collision)
+////    {
+////        if (collision.tag == "Player")
+////        {
+////            collision.GetComponent<Health>().TakeDamage(damage);
+////        }
+////    }
 }

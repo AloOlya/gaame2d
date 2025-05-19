@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4621670852247076600}
   - component: {fileID: 2711111219523800761}
   - component: {fileID: 1836181765782700351}
+  - component: {fileID: 1892292199502574009}
   m_Layer: 0
   m_Name: enemy
   m_TagString: enemy
@@ -91,7 +92,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3863635566180601805, guid: bb22e9cd7a3f50c41aa55c47dd8c2975, type: 3}
+  m_Sprite: {fileID: -3239594328036583930, guid: c078262cfe23e5f45b0fdf215c6fa100, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -134,18 +135,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0076223686, y: -0.01333718}
+  m_Offset: {x: 0.004768148, y: -0.015085846}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.36, y: 0.3}
+    oldSize: {x: 0.3, y: 0.38}
     newSize: {x: 0.36, y: 0.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.33604395, y: 0.27332565}
+  m_Size: {x: 0.2791427, y: 0.3588112}
   m_EdgeRadius: 0
 --- !u!114 &4621670852247076600
 MonoBehaviour:
@@ -159,11 +160,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b0cfdb4d5fd5d43bb6dd5187cc61dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0.5
-  dragon: {fileID: 0}
-  pig: {fileID: 4561210982347934855}
+  pos1: {fileID: 0}
+  pos2: {fileID: 0}
   speed: 1
-  movementDistance: 0
 --- !u!50 &2711111219523800761
 Rigidbody2D:
   serializedVersion: 4
@@ -176,7 +175,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -212,3 +211,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1892292199502574009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4561210982347934855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a53e3feee88c45a44896eec1fb9535f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1

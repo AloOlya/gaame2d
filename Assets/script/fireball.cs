@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class fireball : MonoBehaviour
-{ 
+{
     public float speed;
-    private bool hit;
     private float direction;
+
     private BoxCollider2D boxCollider;
     private Animator anim;
+
+    private bool hit;
     private float lifeTime;
 
     private void Start()
@@ -23,27 +25,28 @@ public class fireball : MonoBehaviour
             return;
         }
         float movementspeed = speed * Time.deltaTime * direction;
-
         transform.Translate(movementspeed, 0, 0);
-
         lifeTime += Time.deltaTime;
-        if (lifeTime > 5 ) 
-        { 
-        Deactivate();
+        if (lifeTime > 5)
+        {
+            gameObject.SetActive(false);
         }
-
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         hit = true;
         boxCollider.enabled = false;
         anim.SetTrigger("explode");
-
-                  if (collision.CompareTag("enemy"))
-            {
+        if (collision.CompareTag("ground") || collision.CompareTag("wall"))
+        {
+            Debug.Log("wall or ground");
             Deactivate();
-            }
-        
+        }
+        else if (collision.CompareTag("enemy"))
+        {
+            Debug.Log("Enemy");
+            Deactivate();
+        }
     }
     public void SetDirection(float _direction)
     {
@@ -51,17 +54,15 @@ public class fireball : MonoBehaviour
         direction = _direction;
         gameObject.SetActive(true);
         hit = false;
-
-        float localScaleX = transform.localScale.x;
-        if (Mathf.Sign(localScaleX) != _direction)
+        float localscaleX = transform.localScale.x;
+        if (Mathf.Sign(localscaleX) != _direction)
         {
-            localScaleX = -localScaleX;
+            localscaleX = -localscaleX;
         }
-        transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(localscaleX, transform.localScale.y, transform.localScale.z);
     }
     private void Deactivate()
     {
         gameObject.SetActive(false);
     }
-    
 }

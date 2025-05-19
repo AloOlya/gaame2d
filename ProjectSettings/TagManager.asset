@@ -12,6 +12,9 @@ TagManager:
   - Checkpoint
   - bulletTurret
   - Coins
+  - spikes
+  - End
+  - boss
   layers:
   - Default
   - TransparentFX
